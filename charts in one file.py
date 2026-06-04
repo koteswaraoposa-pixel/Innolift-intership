@@ -5,26 +5,30 @@ import pandas as pd
 try:
     import matplotlib.pyplot as plt
 except ModuleNotFoundError:
-    raise ModuleNotFoundError(
-        "matplotlib is not installed. Install it with: pip install matplotlib"
-    )
+    raise ModuleNotFoundError("matplotlib is not installed. Install it with: pip install matplotlib")
 
-# Prefer Loan_Default.csv if available, otherwise fall back to Titanic-Dataset.csv.
-CSV_PATHS = ["Loan_Default.csv", "Titanic-Dataset.csv"]
+# Prefer Loan_Default.csv if available; otherwise fall back to another CSV that exists.
+CSV_PATHS = [
+    "Loan_Default.csv",
+    "archive_extracted/Loan_Default.csv",
+    "Titanic-Dataset.csv",
+    "student-mat.csv",
+]
+
 CSV_PATH = next((p for p in CSV_PATHS if os.path.exists(p)), None)
 
 if CSV_PATH is None:
     raise FileNotFoundError(
         "None of these CSV files were found in the project folder: "
         f"{', '.join(CSV_PATHS)}\n"
-        "Place the required CSV in this folder or update CSV_PATHS in the script."
+        "Place one of these CSV files in this folder or update CSV_PATHS in the script."
     )
 
 df = pd.read_csv(CSV_PATH)
-
 print(f"Loaded: {CSV_PATH}")
 
 # --- Charts (only create what the dataset supports) ---
+
 # 1 Bar Chart: Average Loan Amount by Region
 if {"Region", "loan_amount"}.issubset(df.columns):
     plt.figure(figsize=(8, 5))
@@ -32,6 +36,7 @@ if {"Region", "loan_amount"}.issubset(df.columns):
     plt.title("Average Loan Amount by Region")
     plt.tight_layout()
     plt.savefig("bar_chart.png")
+    plt.close()
 
 # 2 Scatter Plot: income vs loan_amount
 if {"income", "loan_amount"}.issubset(df.columns):
@@ -42,6 +47,7 @@ if {"income", "loan_amount"}.issubset(df.columns):
     plt.title("Income vs Loan Amount")
     plt.tight_layout()
     plt.savefig("scatter_plot.png")
+    plt.close()
 
 # 3 Histogram: Credit_Score distribution
 if "Credit_Score" in df.columns:
@@ -50,6 +56,7 @@ if "Credit_Score" in df.columns:
     plt.title("Credit Score Distribution")
     plt.tight_layout()
     plt.savefig("histogram.png")
+    plt.close()
 
 # 4 Line Chart: Average loan_amount by year
 if {"year", "loan_amount"}.issubset(df.columns):
@@ -59,6 +66,7 @@ if {"year", "loan_amount"}.issubset(df.columns):
     plt.title("Average Loan Amount by Year")
     plt.tight_layout()
     plt.savefig("line_chart.png")
+    plt.close()
 
 print("Done. Check generated PNG files in this folder.")
 
