@@ -1,0 +1,5 @@
+Loaded: Loan_Default.csv
+Using target: __default_generated__
+Using features: ['loan_amount', 'income', 'Credit_Score']
+Rows used: 10 -> 10 after numeric cleaning
+Saved plot to: C:\Users\HP\OneDrive\Desktop\innolift intership\actual_vs_predicted.png
