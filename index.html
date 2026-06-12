@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Default Risk Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict">Predict</a></li>
+      <li><a href="/predictions">Predictions</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Loan Default Risk Prediction</h1>
+    <h2>Applicant risk analysis using Flask and SQLite</h2>
+    <p>Review borrower details, estimate default risk, and store prediction records.</p>
+    <a class="button-link" href="/predict">Start Prediction</a>
+  </div>
+
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span>Dataset Records</span>
+        <strong>{{ summary.total_records }}</strong>
+      </div>
+      <div class="stat-card">
+        <span>Default Cases</span>
+        <strong>{{ summary.default_records }}</strong>
+      </div>
+      <div class="stat-card">
+        <span>Default Rate</span>
+        <strong>{{ summary.default_rate }}%</strong>
+      </div>
+      <div class="stat-card">
+        <span>Average Loan Amount</span>
+        <strong>{{ summary.avg_loan_amount }}</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Project Description</h2>
+      <p>This project predicts loan default risk from applicant income, loan amount, credit history, employment, education, and property-area details.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Loan Default Risk Prediction</p>
+  </footer>
+</body>
+</html>
