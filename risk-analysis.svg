@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" role="img" aria-labelledby="title desc">
+  <title id="title">Risk analysis workflow</title>
+  <desc id="desc">A finance workflow illustration showing borrower data moving into a prediction engine.</desc>
+  <rect width="520" height="420" rx="28" fill="#f4f8fb"/>
+  <rect x="50" y="64" width="160" height="248" rx="20" fill="#ffffff" stroke="#d8e6ef" stroke-width="3"/>
+  <rect x="82" y="104" width="96" height="18" rx="9" fill="#10263f"/>
+  <rect x="82" y="150" width="78" height="14" rx="7" fill="#bfd4e5"/>
+  <rect x="82" y="186" width="104" height="14" rx="7" fill="#bfd4e5"/>
+  <rect x="82" y="222" width="88" height="14" rx="7" fill="#bfd4e5"/>
+  <rect x="82" y="260" width="70" height="26" rx="13" fill="#1f9d7a"/>
+  <path d="M230 188h68" stroke="#2b63d9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M288 164l32 24-32 24" fill="none" stroke="#2b63d9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="330" y="78" width="140" height="140" rx="24" fill="#10263f"/>
+  <path d="M366 160c18-48 50-48 68 0" fill="none" stroke="#ffca68" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="400" cy="158" r="14" fill="#61d394"/>
+  <rect x="330" y="246" width="140" height="70" rx="20" fill="#ffffff" stroke="#d8e6ef" stroke-width="3"/>
+  <rect x="358" y="274" width="84" height="16" rx="8" fill="#ff7a7a"/>
+</svg>
