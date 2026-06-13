@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Prediction Records | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Prediction history</p>
+    <h1>Saved Loan Predictions</h1>
+    <p>Review records saved by the backend after each completed risk assessment.</p>
+  </div>
+  <a class="button-link primary" href="/predict">New Prediction</a>
+</section>
+
+<section class="container">
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Income</th>
+          <th>Loan Amount</th>
+          <th>Credit</th>
+          <th>Area</th>
+          <th>Risk</th>
+          <th>Confidence</th>
+          <th>Prediction</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if predictions and predictions|length > 0 %}
+          {% for row in predictions %}
+            <tr>
+              <td>{{ row.loan_id }}</td>
+              <td>{{ row.applicant_income }}</td>
+              <td>{{ row.loan_amount }}</td>
+              <td>{{ row.credit_history }}</td>
+              <td>{{ row.property_area }}</td>
+              <td>
+                <span class="risk-pill {{ row.risk_level|lower|replace(' ', '-') }}">
+                  {{ row.risk_level }}
+                </span>
+                {% if row.risk_score is not none %}
+                  <div class="muted">{{ row.risk_score }}%</div>
+                {% endif %}
+              </td>
+              <td>
+                {% if row.confidence is not none %}
+                  <span class="muted">{{ row.confidence }}%</span>
+                {% else %}
+                  <span class="muted">Not available</span>
+                {% endif %}
+              </td>
+              <td>{{ row.prediction }}</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="8" class="empty-state">No predictions saved yet.</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
