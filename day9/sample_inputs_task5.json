@@ -1,0 +1,67 @@
+[
+    {
+        "Gender": "Male",
+        "Married": "Yes",
+        "Dependents": 0,
+        "Education": "Graduate",
+        "Self_Employed": "No",
+        "ApplicantIncome": 5000,
+        "CoapplicantIncome": 0,
+        "LoanAmount": 120,
+        "Loan_Amount_Term": 360,
+        "Credit_History": 1,
+        "Property_Area": "Urban"
+    },
+    {
+        "Gender": "Female",
+        "Married": "No",
+        "Dependents": 1,
+        "Education": "Not Graduate",
+        "Self_Employed": "No",
+        "ApplicantIncome": 2000,
+        "CoapplicantIncome": 500,
+        "LoanAmount": 200,
+        "Loan_Amount_Term": 180,
+        "Credit_History": 0,
+        "Property_Area": "Rural"
+    },
+    {
+        "Gender": "Male",
+        "Married": "Yes",
+        "Dependents": 2,
+        "Education": "Graduate",
+        "Self_Employed": "Yes",
+        "ApplicantIncome": 6000,
+        "CoapplicantIncome": 1000,
+        "LoanAmount": 180,
+        "Loan_Amount_Term": 360,
+        "Credit_History": 1,
+        "Property_Area": "Semiurban"
+    },
+    {
+        "Gender": "Male",
+        "Married": "Yes",
+        "Dependents": 3,
+        "Education": "Graduate",
+        "Self_Employed": "No",
+        "ApplicantIncome": 8000,
+        "CoapplicantIncome": 2000,
+        "LoanAmount": 250,
+        "Loan_Amount_Term": 360,
+        "Credit_History": 1,
+        "Property_Area": "Urban"
+    },
+    {
+        "Gender": "Female",
+        "Married": "No",
+        "Dependents": 0,
+        "Education": "Not Graduate",
+        "Self_Employed": "No",
+        "ApplicantIncome": 3000,
+        "CoapplicantIncome": 1500,
+        "LoanAmount": 100,
+        "Loan_Amount_Term": 360,
+        "Credit_History": 1,
+        "Property_Area": "Rural"
+    }
+]

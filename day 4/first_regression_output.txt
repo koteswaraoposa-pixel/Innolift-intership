@@ -1,0 +1,10 @@
+Loaded: Loan_Default.csv
+Using target: __default_generated__
+Using features: ['loan_amount', 'income', 'Credit_Score']
+Rows used: 10 -> 10 after numeric cleaning
+
+=== First Regression (Linear Regression OLS) ===
+Train size: 8 | Test size: 2
+Coefficients (intercept first): [6.983291224524165, -5.366009769243771e-05, 8.23985177699180 4e-05, ...]
+RMSE: 0.177200
+R2: 0.874401

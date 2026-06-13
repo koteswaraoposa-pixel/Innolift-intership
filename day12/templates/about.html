@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict">Predict</a></li>
+      <li><a href="/predictions">Predictions</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Project Overview</h2>
+      <p>Loan Default Risk Prediction is a Flask mini project that estimates borrower default risk using a CSV dataset and stores prediction results in SQLite.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dataset Information</h2>
+      <ul class="feature-list">
+        <li>Total records: {{ summary.total_records }}</li>
+        <li>Default records: {{ summary.default_records }}</li>
+        <li>Default rate: {{ summary.default_rate }}%</li>
+        <li>Average applicant income: {{ summary.avg_income }}</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li>Applicant loan risk form</li>
+        <li>CSV-based risk scoring</li>
+        <li>SQLite prediction history</li>
+        <li>Responsive web pages</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright 2026 Loan Default Risk Prediction</p>
+  </footer>
+</body>
+</html>

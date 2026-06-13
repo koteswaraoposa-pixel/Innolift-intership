@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/register">Register</a></li>
+<li><a href="/students">Students</a></li>
+<li><a href="/about">About</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<h2>Student Registration Form</h2>
+
+<form>
+<input type="text" placeholder="Student Name">
+
+<input type="text" placeholder="Roll Number">
+
+<input type="text" placeholder="Department">
+
+<select>
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+
+<input type="email" placeholder="Email">
+
+<input type="text" placeholder="Phone Number">
+
+<select>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<textarea placeholder="Address"></textarea>
+
+<button>Submit</button>
+</form>
+</div>
+
+</body>
+</html>
