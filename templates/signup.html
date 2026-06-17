@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Sign Up | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Create account</p>
+    <h1>Sign Up</h1>
+    <p>Register to access the prediction dashboard.</p>
+  </div>
+</section>
+
+<section class="container two-column">
+  <div>
+    <div class="panel-heading">
+      <h2>Registration</h2>
+      <p class="muted">Your data is stored locally (SQLite) for this demo.</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="message-box">
+          {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/register" class="prediction-form">
+      <div class="form-grid">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" placeholder="yourname" required>
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Create a password" required>
+        </label>
+
+        <label>
+          <span>Confirm Password</span>
+          <input type="password" name="confirm_password" placeholder="Repeat password" required>
+        </label>
+      </div>
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <p class="muted" style="margin-top: 12px;">
+      Already have an account? <a href="/login">Login</a>
+    </p>
+  </div>
+
+  <aside class="insight-panel">
+    <img src="{{ url_for('static', filename='img/loan-dashboard.svg') }}" alt="Account setup illustration">
+    <h2>Access control</h2>
+    <ul class="feature-list">
+      <li>Only registered users can run predictions.</li>
+      <li>Records page shows saved decisions.</li>
+    </ul>
+  </aside>
+</section>
+{% endblock %}
+

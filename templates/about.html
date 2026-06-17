@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}About | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Final project overview</p>
+    <h1>Connected ML Web Application</h1>
+    <p>LoanGuard AI combines frontend forms, Flask routes, SQLite persistence and a trained model for final demonstration.</p>
+  </div>
+</section>
+
+<section class="container about-grid">
+  <div class="card wide-card">
+    <h2>Project Overview</h2>
+    <p>Loan Default Risk Prediction estimates borrower default risk using applicant profile details, financial values and credit history. The project is structured as an end-to-end web application, not just a model notebook.</p>
+  </div>
+
+  <div class="card">
+    <h2>Dataset Information</h2>
+    <ul class="feature-list">
+      <li>Total records: {{ summary.total_records }}</li>
+      <li>Default records: {{ summary.default_records }}</li>
+      <li>Default rate: {{ summary.default_rate }}%</li>
+      <li>Average applicant income: {{ summary.avg_income }}</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Completed Modules</h2>
+    <ul class="feature-list">
+      <li>Responsive frontend screens</li>
+      <li>Flask backend routes</li>
+      <li>SQLite prediction storage</li>
+      <li>Serialized ML model integration</li>
+      <li>Prediction history dashboard</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

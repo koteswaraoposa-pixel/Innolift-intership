@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Website Flow | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">How the website works</p>
+    <h1>Flowchart</h1>
+    <p>Authentication → Prediction → Records. Use this as a guided walkthrough for the complete app behavior.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card" style="padding:26px; max-width:980px; margin:0 auto;">
+    <h2 style="margin-bottom:12px;">Flow Diagram</h2>
+
+    <div class="flowchart-wrap" aria-label="Website flowchart">
+      <pre class="flowchart-pre">@startuml
+skinparam backgroundColor transparent
+skinparam shadowing false
+
+start
+:Open Home URL (/);
+if (Authenticated?) then (Yes)
+  :Show Dashboard (index.html);
+else (No)
+  :Redirect to /login;
+endif
+
+:Login or Sign up;
+if (Signup?) then (Yes)
+  :POST /register; create user in SQLite;
+endif
+:POST /login; verify password hash;
+
+:Redirect to the originally requested page;
+
+if (Route is /predict?) then (Yes)
+  :Show Prediction Form (register.html);
+  :POST /predict with borrower inputs;
+  :Run ML model (final_model.pkl) OR fallback scorer;
+  :Save record to SQLite (LoanPredictions);
+  :Render premium result (loan_prediction.html);
+else (No)
+  if (Route is /predictions?) then (Yes)
+    :Query LoanPredictions;
+    :Render records table (students.html);
+  endif
+endif
+
+:User may Logout;
+:GET /logout; clear session;
+stop
+@enduml</pre>
+
+    <p class="muted" style="margin-top:12px;">
+      Note: The <b>diagram text</b> above is PlantUML syntax.
+      If you paste it into any PlantUML renderer, you will get an actual visual flowchart.
+    </p>
+  </div>
+</section>
+{% endblock %}
+

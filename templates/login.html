@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Login | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Secure access</p>
+    <h1>Login</h1>
+    <p>Sign in to access prediction and records.</p>
+  </div>
+</section>
+
+<section class="container two-column">
+  <div>
+    <div class="panel-heading">
+      <h2>Your account</h2>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="message-box">
+          {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="message-box" style="margin-bottom:14px;">
+      <p class="muted">Use Google for faster access, or login with your username.</p>
+    </div>
+
+    <div class="google-login-row">
+      <a class="button-link google" href="/auth/google">Continue with Google</a>
+    </div>
+
+    <div class="divider-row" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-text">OR</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <form method="POST" action="/login" class="prediction-form">
+      <div class="form-grid">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" placeholder="yourname" required value="{{ request.args.get('username', '') }}">
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Password" required>
+        </label>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="muted" style="margin-top: 12px;">
+      New here? <a href="/register">Create an account</a>
+    </p>
+  </div>
+
+  <aside class="insight-panel">
+    <img src="{{ url_for('static', filename='img/risk-analysis.svg') }}" alt="Secure access illustration">
+    <h2>Why login?</h2>
+    <ul class="feature-list">
+      <li>Protects your prediction and history pages.</li>
+      <li>Keeps decision records private to registered users.</li>
+    </ul>
+  </aside>
+</section>
+{% endblock %}

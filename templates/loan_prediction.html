@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result | LoanGuard AI{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Model insight</p>
+    <h1>Prediction Result</h1>
+    <p>Risk gauge + clarity chart for your latest loan assessment.</p>
+  </div>
+  <a class="button-link primary" href="/predictions">View Records</a>
+</section>
+
+<section class="container">
+  <div class="prediction-visual-grid">
+    <div class="risk-gauge-card">
+      <div class="gauge-wrap">
+        <div class="gauge">
+          {# Use risk_score if provided, otherwise fallback to 0 #}
+          {% set score = (risk_score if risk_score is not none else 0) %}
+          <div class="gauge-circle" data-score="{{ score }}">
+            <div class="gauge-center">
+              <div class="gauge-score">{{ score }}%</div>
+              <div class="gauge-label">Risk score</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-summary">
+        <span class="risk-pill {{ risk_level|lower|replace(' ', '-') }}">{{ risk_level }}</span>
+        <p class="muted" style="margin-top:8px;">{{ prediction }}</p>
+        {% if confidence is not none and confidence >= 0 %}
+          <p class="muted">Confidence: <strong style="color:var(--ink);">{{ confidence }}%</strong></p>
+        {% endif %}
+      </div>
+
+      <div class="gauge-legend">
+        <div class="legend-item"><span class="dot low"></span> Low</div>
+        <div class="legend-item"><span class="dot medium"></span> Medium</div>
+        <div class="legend-item"><span class="dot high"></span> High</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2>Risk Distribution</h2>
+        <p class="muted">Visual emphasis based on your predicted level.</p>
+      </div>
+
+      {# Simple 3 bar chart using server-side logic #}
+      {% set level = risk_level|lower %}
+      {% if 'high' in level %}
+        {% set lowVal = 20 %}{% set medVal = 35 %}{% set highVal = 75 %}
+      {% elif 'medium' in level %}
+        {% set lowVal = 30 %}{% set medVal = 65 %}{% set highVal = 45 %}
+      {% else %}
+        {% set lowVal = 65 %}{% set medVal = 40 %}{% set highVal = 20 %}
+      {% endif %}
+
+      <div class="bars">
+        <div class="bar-row"><div class="bar-label">Low</div><div class="bar-track"><div class="bar-fill low" style="width:{{ lowVal }}%"></div></div><div class="bar-value">{{ lowVal }}%</div></div>
+        <div class="bar-row"><div class="bar-label">Medium</div><div class="bar-track"><div class="bar-fill medium" style="width:{{ medVal }}%"></div></div><div class="bar-value">{{ medVal }}%</div></div>
+        <div class="bar-row"><div class="bar-label">High</div><div class="bar-track"><div class="bar-fill high" style="width:{{ highVal }}%"></div></div><div class="bar-value">{{ highVal }}%</div></div>
+      </div>
+
+      <div class="chart-foot">
+        <p class="muted">This chart is a UI visualization aligned with the risk bucket (not a probability calibration).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding:0; margin-top:18px;">
+    <a class="button-link secondary" href="/predict">Run Another Prediction</a>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const circle = document.querySelector('.gauge-circle');
+    if (!circle) return;
+    const score = Number(circle.getAttribute('data-score') || '0');
+    const percent = Math.max(0, Math.min(score, 100));
+
+    // Gauge is built via conic-gradient.
+    // Set CSS variable for the fill angle.
+    circle.style.setProperty('--fill', percent + '%');
+    circle.style.setProperty('--score', percent);
+  })();
+</script>
+{% endblock %}
+
